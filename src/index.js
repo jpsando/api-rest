@@ -13,20 +13,23 @@ app.use(express.json());
 
 app.post('/admin/product', (req,res) => {
     console.log(req.body);
-    const product = new Product(req.body);
-    
-    //.save() devuelve una promise
-    product.save()
-        .then(() => { 
-            res
-            .status(201)
-            .send (product) 
-        })
-        .catch( (err) => { 
-            res
-            .status(400)
-            .send(err) 
-        });
+    const manyProducts = req.body; 
+    manyProducts.forEach(e => {
+        const product = new Product(e);
+        
+        //.save() devuelve una promise
+        product.save()
+            .then(() => { 
+                res
+                .status(201)
+                .send (product) 
+            })
+            .catch( (err) => { 
+                res
+                .status(400)
+                .send(err) 
+            });  
+    });
 
 });
 
