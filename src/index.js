@@ -14,8 +14,9 @@ app.use(express.json());
 app.post('/admin/product', (req,res) => {
     console.log(req.body);
     const manyProducts = req.body; 
+    let product;
     manyProducts.forEach(e => {
-        const product = new Product(e);
+        product = new Product(e);
         
         //.save() devuelve una promise
         product.save()
