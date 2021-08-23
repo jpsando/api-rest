@@ -13,8 +13,8 @@ const Product = mongoose.model('Product', {
         type: String,
         required: true,
         validate(value){
-            if(value.length > 50){
-                throw new Error('No se puede ingresar un nombre con mas de 50 caracteres')
+            if(value.length > 250){
+                throw new Error('No se puede ingresar un nombre con mas de 250 caracteres')
             }
         }
     },
