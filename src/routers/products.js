@@ -1,8 +1,13 @@
-const express = require('express');
-require('./db/mongoose')
+require('../db/mongoose')
 const mongoose = require('mongoose');
-const router = new express.Router();
+const express = require('express');
+const cors = require('cors');
 const Product = require('../model/product');
+const router = new express.Router();
+
+router.use(cors());
+
+router.use(express.json());
 
 
 router.post('/admin/product', (req,res) => {
